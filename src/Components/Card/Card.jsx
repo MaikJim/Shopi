@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
+import { ShoppingCartContext } from "../../Context/Context";
+import { useContext } from "react";
 function Card({ item }) {
+  const { count, setCount } = useContext(ShoppingCartContext);
   return (
     <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
       <figure className="relative mb-2 w-full h-4/5">
@@ -11,7 +14,12 @@ function Card({ item }) {
           src={item.images[0]}
           alt="Headphones"
         />
-        <div className="absolute top-0 rigth-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+        <div
+          className="absolute top-0 rigth-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
           +
         </div>
       </figure>
