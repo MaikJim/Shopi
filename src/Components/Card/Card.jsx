@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { ShoppingCartContext } from "../../Context/Context";
 import { useContext } from "react";
+import { PlusIcon } from "@heroicons/react/24/solid";
+
 function Card({ item }) {
   const { count, setCount } = useContext(ShoppingCartContext);
   return (
@@ -12,7 +14,7 @@ function Card({ item }) {
         <img
           className="w-full h-full object-cover rounded-lg"
           src={item.images[0]}
-          alt="Headphones"
+          alt={item.title}
         />
         <div
           className="absolute top-0 rigth-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
@@ -20,7 +22,7 @@ function Card({ item }) {
             setCount(count + 1);
           }}
         >
-          +
+          <PlusIcon className="h-6 w-6 text-black"></PlusIcon>
         </div>
       </figure>
       <p className="flex justify-between">
